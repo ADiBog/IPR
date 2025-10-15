@@ -68,14 +68,21 @@ public class Task52_LuckyTicket {
             System.out.println("Ошибка: номер билета должен быть шестизначным (100000-999999)");
             return false;
         }
-        
-        // TODO: Реализовать проверку счастливости билета
-        // Нужно:
-        // 1. Разделить номер на первые 3 цифры и последние 3 цифры
-        // 2. Вычислить сумму первых трех цифр
-        // 3. Вычислить сумму последних трех цифр
-        // 4. Сравнить суммы
-        
-        return false; // Заглушка
-    }
+
+		int firstHalf = ticketNumber / 1000;
+		int secondHalf = ticketNumber % 1000;
+
+		return halfSum(firstHalf) == halfSum(secondHalf);
+	}
+
+	private static int halfSum(int half) {
+		int sum = 0;
+		for (int i = 0; i < 3; i++) {
+			int digit = half % 10;
+			sum += digit;
+			half /= 10;
+		}
+		return sum;
+	}
+
 }
